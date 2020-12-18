@@ -16,5 +16,6 @@ for filename in os.listdir('./cogs'):
             else:
                 print("{} has been succesfully Loaded.".format(filename))
 
+DISCORD_BOT_TOKEN='Nzg4NTQ3OTg4NjQ1MDg1MTk0.X9lGiw.5-IXfdCxC5xqNgCfrqYw0p8ilH8'
 bot.run(DISCORD_BOT_TOKEN)
 
