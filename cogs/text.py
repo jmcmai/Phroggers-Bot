@@ -108,7 +108,7 @@ class Text(commands.Cog):
     @commands.command(description="Returns sadness",
                             brief="Returns sadness")
     async def cry(self, ctx):
-        answer = get_sad_face
+        answer = get_sad_face()
         await ctx.send(answer)
 
 
