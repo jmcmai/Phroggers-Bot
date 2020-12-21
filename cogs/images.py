@@ -61,7 +61,7 @@ class Images(commands.Cog):
         else:
             await ctx.send("Error, contact Administrator")
 
-@commands.command(description="Returns a random image of a monkee.",
+    @commands.command(description="Returns a random image of a monkee.",
                             brief="Returns a random image of a monkee")
     async def monkee(self, ctx):
         await ctx.send("Looking for a monkee...")
