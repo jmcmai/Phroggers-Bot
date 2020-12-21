@@ -16,6 +16,12 @@ def get_8ball_answer():
     answer = random.choice(answers_file['answers'])
     return answer
 
+def get_sad_face():
+    with open(os.path.join(DATA_DIR, 'sad.json')) as f:
+        answers_file = json.load(f)
+    answer = random.choice(answers_file['sad'])
+    return answer
+
 
 vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
 

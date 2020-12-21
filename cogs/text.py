@@ -1,7 +1,7 @@
 import aiohttp
 import discord
 from discord.ext import commands
-from utils import text_to_owo, get_frog_facts, get_8ball_answer
+from utils import text_to_owo, get_frog_facts, get_8ball_answer, get_sad_face
 
 class Text(commands.Cog):
     def __init__(self, bot):
@@ -104,6 +104,12 @@ class Text(commands.Cog):
     async def eightball(self, ctx):
         answer = get_8ball_answer()
         await ctx.send(":8ball:" + answer)
+
+    @commands.command(description="Returns sadness",
+                            brief="Returns sadness")
+    async def cry(self, ctx):
+        answer = get_sad_face
+        await ctx.send(answer)
 
 
 def setup(bot):
