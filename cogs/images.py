@@ -66,7 +66,7 @@ class Images(commands.Cog):
     async def monkee(self, ctx):
         await ctx.send("Looking for a monkee...")
         if self.reddit:
-            subreddit = 'monkeys' if random.randint(0, 2) == 0 else 'apes'
+            subreddit = 'monkeys' if random.randint(0, 2) == 0 else 'ape'
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
