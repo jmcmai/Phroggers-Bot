@@ -68,8 +68,8 @@ class Images(commands.Cog):
         if self.reddit:
             subreddit = 'monkeys' if random.randint(0, 2) == 0 else 'apes'
             submissions = self.reddit.subreddit(subreddit).hot()
-            # post = random.randint(1, 100)
-            for i in range(0, 101):
+            post = random.randint(1, 100)
+            for i in range(0, post):
                 submission = next(x for x in submissions if not x.stickied and not x.is_self)
             embed = discord.Embed(title=":monkey: Embrace monkee")
             embed.set_image(url=submission.url)
@@ -85,8 +85,8 @@ class Images(commands.Cog):
         if self.reddit:
             subreddit = 'birbs'
             submissions = self.reddit.subreddit(subreddit).hot()
-            # post = random.randint(1, 100)
-            for i in range(0, 101):
+            post = random.randint(1, 100)
+            for i in range(0, post):
                 submission = next(x for x in submissions if not x.stickied and not x.is_self)
             embed = discord.Embed(title=":hatching_chick: Oh look, a birb!")
             embed.set_image(url=submission.url)
@@ -102,8 +102,8 @@ class Images(commands.Cog):
         if self.reddit:
             subreddit = random.choice(REDDIT_ENABLED_DOG_SUBREDDITS)
             submissions = self.reddit.subreddit(subreddit).hot()
-            # post = random.randint(1, 100)
-            for i in range(0, 101):
+            post = random.randint(1, 100)
+            for i in range(0, post):
                 submission = next(x for x in submissions if not x.stickied and not x.is_self)
             embed = discord.Embed(title=":dog: Oh look, a doggo!")
             embed.set_image(url=submission.url)
@@ -119,8 +119,8 @@ class Images(commands.Cog):
         if self.reddit:
             subreddit = random.choice(REDDIT_ENABLED_CAT_SUBREDDITS)
             submissions = self.reddit.subreddit(subreddit).hot()
-            # post = random.randint(1, 100)
-            for i in range(0, 101):
+            post = random.randint(1, 100)
+            for i in range(0, post):
                 submission = next(x for x in submissions if not x.stickied and not x.is_self)
             embed = discord.Embed(title=":cat: Oh look, a cat!")
             embed.set_image(url=submission.url)
@@ -136,8 +136,8 @@ class Images(commands.Cog):
         if self.reddit:
             subreddit = 'aww'
             submissions = self.reddit.subreddit(subreddit).hot()
-            # post = random.randint(1, 100)
-            for i in range(0, 101):
+            post = random.randint(1, 100)
+            for i in range(0, post):
                 submission = next(x for x in submissions if not x.stickied and not x.is_self)
             embed = discord.Embed(title=":smiling_face_with_3_hearts: owo uwu owu uwo :smiling_face_with_3_hearts:")
             embed.set_image(url=submission.url)
@@ -167,8 +167,8 @@ class Images(commands.Cog):
         if self.reddit:
             subreddit = random.choice(REDDIT_ENABLED_FOOD_SUBREDDITS)
             submissions = self.reddit.subreddit(subreddit).hot()
-            # post = random.randint(1, 100)
-            for i in range(0, 101):
+            post = random.randint(1, 100)
+            for i in range(0, post):
                 submission = next(x for x in submissions if not x.stickied and not x.is_self)
             embed = discord.Embed(title=":drooling_face: Mmmmmmm...")
             embed.set_image(url=submission.url)
