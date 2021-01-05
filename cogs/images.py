@@ -3,6 +3,8 @@ import aiohttp
 import discord
 from discord.ext import commands
 import praw
+from utils import check_image
+import re
 
 REDDIT_APP_ID='7_KuQ9Zu2o8uvA'
 REDDIT_APP_SECRET='8s63yJVFnst-u11QSvvBNFCeV9xEkg'
@@ -53,7 +55,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 50)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title="Phroggers!! :frog:")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)
@@ -70,7 +74,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":monkey: Embrace monkee")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)
@@ -87,7 +93,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":hatching_chick: Oh look, a birb!")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)
@@ -99,18 +107,15 @@ class Images(commands.Cog):
                             brief='Return a random image of a dog')
     async def dog(self, ctx):
         await ctx.send("Looking for a good boi...")
-        if self.reddit:
-            subreddit = random.choice(REDDIT_ENABLED_DOG_SUBREDDITS)
-            submissions = self.reddit.subreddit(subreddit).hot()
-            post = random.randint(1, 100)
-            for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
-            embed = discord.Embed(title=":dog: Oh look, a doggo!")
-            embed.set_image(url=submission.url)
-            embed.set_footer(text="Powered by: " + submission.url)
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("Error, contact Administrator")
+        async with aiohttp.ClientSession() as cs:
+            async with cs.get("https://dog.ceo/api/breeds/image/random") as r:
+                data = await r.json()
+
+                embed = discord.Embed(title=":dog: Oh look, a doggo!")
+                embed.set_image(url=data['message'])
+                embed.set_footer(text="Powered by: https://dog.ceo/dog-api/")
+
+                await ctx.send(embed=embed)
     
     @commands.command(description="Returns a random image of a cat.",
                         brief='Return a random image of a cat')
@@ -121,7 +126,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":cat: Oh look, a cat!")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)
@@ -138,7 +145,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":smiling_face_with_3_hearts: owo uwu owu uwo :smiling_face_with_3_hearts:")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)
@@ -169,7 +178,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":drooling_face: Mmmmmmm...")
             embed.set_image(url=submission.url)
             await ctx.send(embed=embed)
@@ -186,7 +197,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":smiling_face_with_3_hearts: uwuwuwuwuwuwuwuwuwu")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)
@@ -203,7 +216,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":frog: Major Phroggers :frog:")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)
@@ -220,7 +235,9 @@ class Images(commands.Cog):
             submissions = self.reddit.subreddit(subreddit).hot()
             post = random.randint(1, 100)
             for i in range(0, post):
-                submission = next(x for x in submissions if not x.stickied and not x.is_self)
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
             embed = discord.Embed(title=":flushed:")
             embed.set_image(url=submission.url)
             embed.set_footer(text="Powered by: " + submission.url)

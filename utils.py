@@ -1,6 +1,7 @@
 import random
 import json
 import os
+import re
 
 from settings import *
 
@@ -21,6 +22,16 @@ def get_sad_face():
         answers_file = json.load(f)
     answer = random.choice(answers_file['sad'])
     return answer
+
+def check_image(url):
+    # url 
+    s = url
+    # searching for all capture groups 
+    obj = re.findall('(\w+)://([\w\-\.]+)/(\w+).(\w+)', s) 
+    # print(obj)
+    if len(obj) != 0 and obj[0][1] == 'i.redd.it':
+        return True
+    return False
 
 
 vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
