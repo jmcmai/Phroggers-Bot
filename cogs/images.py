@@ -2,41 +2,10 @@ import random
 import aiohttp
 import discord
 from discord.ext import commands
+from settings import *
 import praw
 from utils import check_image
 import re
-
-REDDIT_APP_ID='7_KuQ9Zu2o8uvA'
-REDDIT_APP_SECRET='8s63yJVFnst-u11QSvvBNFCeV9xEkg'
-
-REDDIT_ENABLED_FOOD_SUBREDDITS=[
-    'food',
-    'foodporn',
-    'dessertporn'
-]
-
-REDDIT_ENABLED_DOG_SUBREDDITS=[
-    'dogs',
-    'dogpictures',
-    'puppies',
-    'rarepuppers',
-    'corgi',
-    'shiba',
-    'whatswrongwithyourdog',
-    'puppysmiles'
-]
-
-REDDIT_ENABLED_CAT_SUBREDDITS=[
-    'catpics',
-    'meow_irl',
-    'cats',
-    'kittens',
-    'illegallysmolcats',
-    'cutecats',
-    'catloaf',
-    'tuckedinkitties'
-]
-
 
 class Images(commands.Cog):
     def __init__(self, bot):

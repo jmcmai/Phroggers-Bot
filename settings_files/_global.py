@@ -8,10 +8,10 @@ DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN", False)
 
 REDDIT_APP_ID = os.getenv("REDDIT_APP_ID", False)
 REDDIT_APP_SECRET = os.getenv("REDDIT_APP_SECRET", False)
+
 REDDIT_ENABLED_FOOD_SUBREDDITS=[
     'food',
     'foodporn',
-    'shittyfoodporn',
     'dessertporn'
 ]
 

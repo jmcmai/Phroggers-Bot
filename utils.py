@@ -24,11 +24,9 @@ def get_sad_face():
     return answer
 
 def check_image(url):
-    # url 
     s = url
     # searching for all capture groups 
     obj = re.findall('(\w+)://([\w\-\.]+)/(\w+).(\w+)', s) 
-    # print(obj)
     if len(obj) != 0 and obj[0][1] == 'i.redd.it':
         return True
     return False
