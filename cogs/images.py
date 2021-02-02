@@ -214,7 +214,7 @@ class Images(commands.Cog):
         else:
             await ctx.send("Error, contact Administrator")
         
-        @commands.command(description="Returns a random ferret picture.",
+    @commands.command(description="Returns a random ferret picture.",
                         brief='Returns a random ferret image')
     async def ferret(self, ctx):
         await ctx.send("Looking for a picture of a ferret...")
