@@ -213,6 +213,25 @@ class Images(commands.Cog):
             await ctx.send(embed=embed)
         else:
             await ctx.send("Error, contact Administrator")
+        
+        @commands.command(description="Returns a random ferret picture.",
+                        brief='Returns a random ferret image')
+    async def ferret(self, ctx):
+        await ctx.send("Looking for a picture of a ferret...")
+        if self.reddit:
+            subreddit = 'ferret'
+            submissions = self.reddit.subreddit(subreddit).hot()
+            post = random.randint(1, 100)
+            for i in range(0, post):
+                test = next(x for x in submissions if not x.stickied and not x.is_self)
+                if check_image(test.url):
+                    submission = test
+            embed = discord.Embed(title="I hope you're happy")
+            embed.set_image(url=submission.url)
+            embed.set_footer(text="Powered by: " + submission.url)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("Error, contact Administrator")
 
 def setup(bot):
     bot.add_cog(Images(bot))
