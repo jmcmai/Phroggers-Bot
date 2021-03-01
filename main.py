@@ -1,4 +1,5 @@
 import os
+import discord
 from discord.ext import commands
 from settings import *
 
@@ -16,6 +17,9 @@ for filename in os.listdir('./cogs'):
             else:
                 print("{} has been succesfully Loaded.".format(filename))
 
-
+@bot.event
+async def on_ready():
+    await bot.change_presence(status=discord.Status.idle, activity=discord.Game('phroggers! | $help'))
+    
 bot.run(DISCORD_BOT_TOKEN)
 
