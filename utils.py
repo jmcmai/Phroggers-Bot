@@ -31,6 +31,12 @@ def check_image(url):
         return True
     return False
 
+def get_agent():
+    with open(os.path.join(DATA_DIR, 'agents.json')) as f:
+        agents_file = json.load(f)
+    agent = random.choice(agents_file['agents'])
+    return agent
+
 
 vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
 

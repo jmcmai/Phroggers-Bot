@@ -1,12 +1,13 @@
 import aiohttp
 import discord
 from discord.ext import commands
-from utils import text_to_owo, get_frog_facts, get_8ball_answer, get_sad_face
+from utils import get_agent, text_to_owo, get_frog_facts, get_8ball_answer, get_sad_face
 
 class Text(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # Change depending on error
     @commands.Cog.listener()
     async def on_command_error(self, ctx, e):
         print(e)
@@ -18,12 +19,12 @@ class Text(commands.Cog):
         await ctx.send(text_to_owo(ctx.message.content)[4:])
 
     @commands.command(description='Returns a random joke', brief="Returns a random joke")
-    async def joke(self, ctx):
+    async def dadjoke(self, ctx):
         await ctx.send("Looking for a random joke...")
         async with aiohttp.ClientSession() as cs:
-            async with cs.get("https://official-joke-api.appspot.com/random_joke") as r:
+            async with cs.get("https://icanhazdadjoke.com/slack") as r:
                 data = await r.json()
-                embed = discord.Embed(title=data['setup'], description=data['punchline'])
+                embed = discord.Embed(description=data['attachments'][0]['text'])
                 await ctx.send(embed=embed)
 
     @commands.command(description="Returns a random word", brief="Returns a random word")
@@ -111,6 +112,25 @@ class Text(commands.Cog):
         answer = get_sad_face()
         await ctx.send(answer)
 
+    @commands.command(description="Returns a hug", brief="Returns a hug")
+    async def hug(self, ctx, member: discord.Member = None):
+        if member != None:
+            if member.nick != None:
+                text = '༼つ ் ▽ ் ༽つ ⊂( **{}** ⊂)'.format(member.nick)
+            else:
+                text = '༼つ ் ▽ ் ༽つ ⊂( **{}** ⊂)'.format(member.name)
+        else:
+            text = '༼つ ் ▽ ் ༽つ ⊂(´・ω・｀⊂)'
+
+        embed = discord.Embed(description=text)
+        await ctx.send(embed=embed)
+
+    @commands.command(description="Returns a random Valorant agent",
+                            brief="Returns a random Valorant agent")
+    async def agent(self, ctx):
+        answer = get_agent()
+        embed = discord.Embed(description="Your agent is {}.".format(answer))
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Text(bot))
