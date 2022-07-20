@@ -21,6 +21,6 @@ for filename in os.listdir('./cogs'):
 async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=discord.Game('phroggers! | $help'))
 
-DISCORD_BOT_TOKEN = 'Nzg4NTQ3OTg4NjQ1MDg1MTk0.X9lGiw.4o2BPDzIQ0efH_LhjoxdkEssy_Y'  
+DISCORD_BOT_TOKEN = 'Nzg4NTQ3OTg4NjQ1MDg1MTk0.GYmx4-.kk0fcmopDwjvb1j3k0dqXV6oj2F4arvCQcKosg'  
 bot.run(DISCORD_BOT_TOKEN)
 
