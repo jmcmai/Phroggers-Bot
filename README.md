@@ -1,5 +1,5 @@
 # Phroggers Discord Bot
-This is a discord bot that uses free online API's to display images and tell facts/jokes.
+This is a discord bot that uses free online API's to display images and tell facts/jokes. Contact me if you want Phroggers to be in your discord server!
 
 Features include: 
 - Displaying images of various animals and memes:
