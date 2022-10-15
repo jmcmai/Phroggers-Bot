@@ -23,3 +23,5 @@ Features include:
 1. Reddit API
 2. Dog API: https://dog.ceo/dog-api/ 
 3. Fox API: https://randomfox.ca/
+4. Dad Joke API: https://icanhazdadjoke.com/
+5. Random Word API: https://random-word-api.herokuapp.com/home
